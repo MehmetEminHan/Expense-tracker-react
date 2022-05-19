@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
-import {Menu, MenuItem, ProSidebar, SidebarHeader, SubMenu} from "react-pro-sidebar";
-import {Gem, Speedometer} from "react-bootstrap-icons";
+import SideNav, {NavIcon, NavItem, NavText} from '@trendmicro/react-sidenav';
+import {BarChartLineFill, HouseFill, Speedometer} from "react-bootstrap-icons";
+import {Link} from "react-router-dom";
 
 class SliderNavBar extends Component {
 
     constructor(props) {
         super(props);
 
+        this.state = {
+            expanded: false
+        }
     }
 
 
@@ -14,22 +18,60 @@ class SliderNavBar extends Component {
 
         return (
             <div>
-                <ProSidebar>
-                    <SidebarHeader>
-                        Demo
-                    </SidebarHeader>
-                    <Menu iconShape="square">
-                        <MenuItem icon={<Speedometer/>}>Dashboard</MenuItem>
-                        <SubMenu title="Components" icon={<Gem/>}>
-                            <MenuItem>Component 1</MenuItem>
-                            <MenuItem>Component 2</MenuItem>
-                        </SubMenu>
+                <SideNav
+                    style={{backgroundColor: "#222831", position: "fixed"}}
+                    expanded={this.state.expanded}
+                    onToggle={(expanded) => {
+                        this.setState({expanded});
+                    }}>
 
+                    <SideNav.Toggle/>
+                    <SideNav.Nav>
+                        <NavItem>
+                            <Link to="/Dashboard">
+                                <NavItem>
+                                    <NavIcon>
+                                        <HouseFill/>
+                                    </NavIcon>
+                                    <NavText>
+                                        Home
+                                    </NavText>
+                                </NavItem>
+                            </Link>
+                        </NavItem>
+                        <NavItem>
+                            <Link to="/Dashboard/Expense">
+                                <NavItem>
 
-
-                    </Menu>
-
-                </ProSidebar>
+                                    <NavIcon>
+                                        <BarChartLineFill/>
+                                    </NavIcon>
+                                    <NavText>
+                                        Expense
+                                    </NavText>
+                                </NavItem>
+                            </Link>
+                        </NavItem>
+                        <NavItem eventKey="charts">
+                            <NavIcon>
+                                <Speedometer/>
+                            </NavIcon>
+                            <NavText>
+                                Charts
+                            </NavText>
+                            <NavItem eventKey="charts/linechart">
+                                <NavText>
+                                    Line Chart
+                                </NavText>
+                            </NavItem>
+                            <NavItem eventKey="charts/barchart">
+                                <NavText>
+                                    Bar Chart
+                                </NavText>
+                            </NavItem>
+                        </NavItem>
+                    </SideNav.Nav>
+                </SideNav>
             </div>
         );
     }

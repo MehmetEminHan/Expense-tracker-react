@@ -5,6 +5,7 @@ import MainComponent from "./MainComponent";
 import 'bootstrap/dist/css/bootstrap.css';
 import 'alertifyjs/build/css/alertify.css';
 import 'react-pro-sidebar/dist/css/styles.css';
+import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
