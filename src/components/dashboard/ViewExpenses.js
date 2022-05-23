@@ -3,6 +3,7 @@ import {Accordion, Col, Container, Row, Table} from "react-bootstrap";
 import {BarElement, CategoryScale, ArcElement, Chart as ChartJS, Legend, LinearScale, Title, Tooltip,} from 'chart.js';
 import faker from 'faker';
 import {Bar, Pie} from 'react-chartjs-2';
+import {Breadcrumb} from "antd";
 
 
 class ViewExpenses extends Component {
@@ -96,9 +97,15 @@ class ViewExpenses extends Component {
         };
 
         return (
-            <div>
+            <div className="mt-5">
 
                 <Container fluid>
+
+                    <Breadcrumb>
+                        <Breadcrumb.Item>Home</Breadcrumb.Item>
+                        <Breadcrumb.Item>Expense View</Breadcrumb.Item>
+                    </Breadcrumb>
+
                     <Row className="mb-5 mt-5">
                         <Col md="8">
                             <Bar options={options} data={data} width="320px"/>
