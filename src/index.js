@@ -10,11 +10,9 @@ import 'antd/dist/antd.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-var isSignedIn = true;
-
 root.render(
     <>
-        <MainComponent isSignedIn={isSignedIn}/>
+        <MainComponent/>
     </>
 );
 

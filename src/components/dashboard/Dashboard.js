@@ -1,14 +1,11 @@
 import React, {Component} from 'react';
-import {Layout} from 'antd';
-import {Route, Routes} from "react-router-dom";
-import {MenuUnfoldOutlined} from "@ant-design/icons";
-import DashboardSidebar from "./DashboardSidebar";
-import DashboardHeader from "./DashboardHeader";
-import DashboardFooter from "./DashboardFooter";
+import {Col, Container, Row} from "react-bootstrap";
+import DashboardNavbar from "./DashboardNavbar";
 import DashboardHome from "./DashboardHome";
+import DashboardFooter from "./DashboardFooter";
+import DashboardSidebar from "./DashboardSidebar";
+import {Route, Routes} from "react-router-dom";
 import ViewExpenses from "./ViewExpenses";
-
-const {Header, Content, Footer, Sider} = Layout;
 
 class Dashboard extends Component {
 
@@ -16,55 +13,50 @@ class Dashboard extends Component {
         super(props);
 
         this.state = {
-            fix: "fixed",
-            mar: 0,
-            collapsed: false,
-            placement: "left",
-            visible: false,
-            sidebarCollapseIcon: <MenuUnfoldOutlined/>
+            show: false
         }
 
     }
 
-    toggle = () => {
-        this.setState({
-            collapsed: !this.state.collapsed,
-        });
-    };
+    handleClose = () => {
+        this.setState({show: false});
+    }
 
-    showDrawer = () => {
-        this.setState({visible: true});
-    };
-
-    onClose = () => {
-        this.setState({visible: false});
-    };
+    handleShow = () => {
+        this.setState({show: true});
+    }
 
     render() {
         return (
             <div>
-                <Layout>
 
-                    <DashboardSidebar visible={this.state.visible} onClose={this.onClose}/>
+                <DashboardSidebar show={this.state.show} handleClose={this.handleClose}/>
 
-                    <Layout className="site-layout" style={{marginLeft: 0}}>
+                <Container fluid style={{padding: 0}}>
+                    <Row>
+                        <Col>
+                            <DashboardNavbar show={this.state.show} handleShow={this.handleShow}/>
+                        </Col>
+                    </Row>
 
-                        <DashboardHeader showDrawer={this.showDrawer}/>
+                    <Row>
+                        <Col xs="11" className="mx-auto">
+                            <Routes>
+                                <Route path="/" element={<DashboardHome/>}/>
+                                <Route path="/Expenses" element={<ViewExpenses/>}/>
+                            </Routes>
 
-                        <Content style={{margin: '24px 16px 0', overflow: 'initial'}}>
-                            <div className="site-layout-background" style={{padding: 24, textAlign: 'center',}}>
+                        </Col>
+                    </Row>
 
-                                <Routes>
-                                    <Route path="/" element={<DashboardHome/>}/>
-                                    <Route path="/Expenses" element={<ViewExpenses/>}/>
-                                </Routes>
+                    <Row>
+                        <Col>
+                            <DashboardFooter/>
+                        </Col>
+                    </Row>
 
-                            </div>
-                        </Content>
+                </Container>
 
-                        <DashboardFooter/>
-                    </Layout>
-                </Layout>
             </div>
         );
     }
