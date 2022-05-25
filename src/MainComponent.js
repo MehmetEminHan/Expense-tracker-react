@@ -3,6 +3,7 @@ import {BrowserRouter} from "react-router-dom";
 import Dashboard from "./components/dashboard/Dashboard";
 import Homepage from "./components/homepage/Homepage";
 
+
 class MainComponent extends Component {
     render() {
         return (
@@ -15,6 +16,7 @@ class MainComponent extends Component {
                 <BrowserRouter basename="/">
                     <Homepage/>
                 </BrowserRouter>
+
 
             </div>
         );

@@ -6,6 +6,7 @@ import DashboardFooter from "./DashboardFooter";
 import DashboardSidebar from "./DashboardSidebar";
 import {Route, Routes} from "react-router-dom";
 import ViewExpenses from "./ViewExpenses";
+import AddExpense from "./AddExpense";
 
 class Dashboard extends Component {
 
@@ -44,6 +45,7 @@ class Dashboard extends Component {
                             <Routes>
                                 <Route path="/" element={<DashboardHome/>}/>
                                 <Route path="/Expenses" element={<ViewExpenses/>}/>
+                                <Route path="/AddExpense" element={<AddExpense/>}/>
                             </Routes>
 
                         </Col>

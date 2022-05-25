@@ -118,9 +118,9 @@ class ViewExpenses extends Component {
                     </Row>
 
                     {/*TODO write another accordions for the other expenses!!!*/}
-                        <Accordion defaultActiveKey="0">
+                        <Accordion defaultActiveKey="1">
                             <Accordion.Item eventKey="0">
-                                <Accordion.Header>Show Expenses</Accordion.Header>
+                                <Accordion.Header>Show Daily Expenses</Accordion.Header>
                                 <Accordion.Body>
                                     <Table striped bordered hover variant="light">
                                         <thead>
@@ -308,9 +308,91 @@ class ViewExpenses extends Component {
                             </Accordion.Item>
                         </Accordion>
 
-                        <Row className="mt-5">
+                        <Row className="mt-2">
+                            <Accordion defaultActiveKey="1">
+                                <Accordion.Item eventKey="0">
+                                    <Accordion.Header>Show Weekly Expenses</Accordion.Header>
+                                    <Accordion.Body>
+                                        <Table striped bordered hover variant="light">
+                                            <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Expense Date</th>
+                                                <th>Expense Kind</th>
+                                                <th>Expense Coast</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>06/22/22</td>
+                                                <td>Market</td>
+                                                <td>$156</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>06/23/22</td>
+                                                <td>Ticket</td>
+                                                <td>$16</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>06/24/22</td>
+                                                <td>Transportation</td>
+                                                <td>$15</td>
+                                            </tr>
+
+
+                                            </tbody>
+                                        </Table>
+                                    </Accordion.Body>
+                                </Accordion.Item>
+                            </Accordion>
 
                         </Row>
+
+                    <Row className="mt-2">
+                        <Accordion defaultActiveKey="1">
+                            <Accordion.Item eventKey="0">
+                                <Accordion.Header>Show Monthly Expenses</Accordion.Header>
+                                <Accordion.Body>
+                                    <Table striped bordered hover variant="light">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Expense Date</th>
+                                            <th>Expense Kind</th>
+                                            <th>Expense Coast</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>06/22/22</td>
+                                            <td>Market</td>
+                                            <td>$156</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>06/23/22</td>
+                                            <td>Ticket</td>
+                                            <td>$16</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>06/24/22</td>
+                                            <td>Transportation</td>
+                                            <td>$15</td>
+                                        </tr>
+
+
+                                        </tbody>
+                                    </Table>
+                                </Accordion.Body>
+                            </Accordion.Item>
+                        </Accordion>
+
+                    </Row>
                         </Container>
 
 

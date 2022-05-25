@@ -8,6 +8,7 @@ import 'react-pro-sidebar/dist/css/styles.css';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import 'antd/dist/antd.css';
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
