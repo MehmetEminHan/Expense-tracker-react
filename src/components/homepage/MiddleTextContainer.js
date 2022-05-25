@@ -13,13 +13,13 @@ class MiddleTextContainer extends Component {
                     <Row className="py-lg-5">
                         <Col lg="6" md="8" className="mx-auto">
                             <h1 className="fw-light">About Expense Tracker</h1>
-                            <p className="lead text-muted">Expense Tracker were developed for the help your money
-                                management.
-                                Expense Tracker aims to reduce your effort to keep your expenses for hours via
-                                spreadsheets to a minimum.</p>
+                            <p className="lead text-muted">Expense Tracker is a tracker website which you can use for
+                                track your expanse and watch your expense analysis. In future, we are going to add
+                                goal/limit, option of compare with older expenses, option of categorize expense and etc.
+                                Now, you can use only track your expenses.</p>
                             <p>
 
-                                <Button variant="primary" className="me-1">About Us</Button>
+                                <Button variant="primary" className="me-1" href="/AboutUs">About Us</Button>
 
                             </p>
                         </Col>

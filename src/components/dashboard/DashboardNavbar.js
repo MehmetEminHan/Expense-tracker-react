@@ -1,9 +1,45 @@
 import React, {Component} from 'react';
 import {Button, Container, Nav, Navbar} from "react-bootstrap";
-import {List} from "react-bootstrap-icons";
-import {Link} from "react-router-dom";
+import {ArrowReturnLeft, BoxArrowLeft, Gear, List, PersonCircle} from "react-bootstrap-icons";
+import {Dropdown, Menu} from "antd";
+import {UserOutlined} from "@ant-design/icons";
 
 class DashboardNavbar extends Component {
+
+    constructor(props) {
+        super(props);
+
+    }
+
+    showOverlayMenu = () => {
+
+        return (
+            <Menu items={[
+                {
+                    label: "Profile",
+                    key: '1',
+                    icon: <UserOutlined/>,
+                },
+                {
+                    label: <a href="/" target="_blank">Return website</a>,
+                    key: '2',
+                    icon: <ArrowReturnLeft/>,
+                },
+                {
+                    label: 'Settings',
+                    key: '3',
+                    icon: <Gear/>,
+                },
+                {
+                    label: 'Exit',
+                    key: '4',
+                    icon: <BoxArrowLeft/>,
+                }
+            ]} />
+        );
+    }
+
+
     render() {
         return (
             <div>
@@ -18,12 +54,14 @@ class DashboardNavbar extends Component {
                             <Nav className="me-auto">
 
                             </Nav>
-                            <Nav>
-                                <Nav.Link href="#deets">
 
-                                    <Link to="/"><Navbar.Brand>Expense Tracker</Navbar.Brand></Link>
+                            <Nav className="me-5">
 
-                                </Nav.Link>
+                                <Dropdown.Button placement="bottom" icon={<PersonCircle/>}
+                                                 overlay={this.showOverlayMenu}>
+                                    Mehmet
+                                </Dropdown.Button>
+
                             </Nav>
                         </Navbar.Collapse>
                     </Container>

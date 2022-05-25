@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
-import {Accordion, Col, Container, Row, Table} from "react-bootstrap";
-import {BarElement, CategoryScale, ArcElement, Chart as ChartJS, Legend, LinearScale, Title, Tooltip,} from 'chart.js';
+import {Accordion, Button, Col, Container, Row, Table} from "react-bootstrap";
+import {ArcElement, BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title, Tooltip,} from 'chart.js';
 import faker from 'faker';
 import {Bar, Pie} from 'react-chartjs-2';
 import {Breadcrumb} from "antd";
 
 
 class ViewExpenses extends Component {
+
+
     render() {
         const options = {
             responsive: true,
@@ -118,9 +120,46 @@ class ViewExpenses extends Component {
                     </Row>
 
                     {/*TODO write another accordions for the other expenses!!!*/}
+                    <Accordion defaultActiveKey="1">
+                        <Accordion.Item eventKey="0">
+                            <Accordion.Header>Show Daily Expenses</Accordion.Header>
+                            <Accordion.Body>
+                                <Table striped bordered hover variant="light">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Expense Date</th>
+                                        <th>Expense Kind</th>
+                                        <th>Expense Coast</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>06/22/22</td>
+                                        <td>Market</td>
+                                        <td>$156</td>
+                                        <td>
+                                            <Button variant="outline-primary" style={{
+                                                marginRight: "10px"
+                                            }}>Edit</Button>
+                                            <Button variant="outline-danger">Delete</Button>
+                                        </td>
+
+                                    </tr>
+
+
+                                    </tbody>
+                                </Table>
+                            </Accordion.Body>
+                        </Accordion.Item>
+                    </Accordion>
+
+                    <Row className="mt-2">
                         <Accordion defaultActiveKey="1">
                             <Accordion.Item eventKey="0">
-                                <Accordion.Header>Show Daily Expenses</Accordion.Header>
+                                <Accordion.Header>Show Weekly Expenses</Accordion.Header>
                                 <Accordion.Body>
                                     <Table striped bordered hover variant="light">
                                         <thead>
@@ -129,6 +168,7 @@ class ViewExpenses extends Component {
                                             <th>Expense Date</th>
                                             <th>Expense Kind</th>
                                             <th>Expense Coast</th>
+                                            <th>Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -137,219 +177,20 @@ class ViewExpenses extends Component {
                                             <td>06/22/22</td>
                                             <td>Market</td>
                                             <td>$156</td>
+                                            <td>
+                                                <Button variant="outline-primary" style={{
+                                                    marginRight: "10px"
+                                                }}>Edit</Button>
+                                                <Button variant="outline-danger">Delete</Button>
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>06/23/22</td>
-                                            <td>Ticket</td>
-                                            <td>$16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>06/24/22</td>
-                                            <td>Transportation</td>
-                                            <td>$15</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>06/24/22</td>
-                                            <td>Transportation</td>
-                                            <td>$15</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>06/24/22</td>
-                                            <td>Transportation</td>
-                                            <td>$15</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>06/24/22</td>
-                                            <td>Transportation</td>
-                                            <td>$15</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>06/24/22</td>
-                                            <td>Transportation</td>
-                                            <td>$15</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>06/24/22</td>
-                                            <td>Transportation</td>
-                                            <td>$15</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>06/24/22</td>
-                                            <td>Transportation</td>
-                                            <td>$15</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>06/24/22</td>
-                                            <td>Transportation</td>
-                                            <td>$15</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>06/24/22</td>
-                                            <td>Transportation</td>
-                                            <td>$15</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>06/24/22</td>
-                                            <td>Transportation</td>
-                                            <td>$15</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>06/24/22</td>
-                                            <td>Transportation</td>
-                                            <td>$15</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>06/24/22</td>
-                                            <td>Transportation</td>
-                                            <td>$15</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>06/24/22</td>
-                                            <td>Transportation</td>
-                                            <td>$15</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>06/24/22</td>
-                                            <td>Transportation</td>
-                                            <td>$15</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>06/24/22</td>
-                                            <td>Transportation</td>
-                                            <td>$15</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>06/24/22</td>
-                                            <td>Transportation</td>
-                                            <td>$15</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>06/24/22</td>
-                                            <td>Transportation</td>
-                                            <td>$15</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>06/24/22</td>
-                                            <td>Transportation</td>
-                                            <td>$15</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>06/24/22</td>
-                                            <td>Transportation</td>
-                                            <td>$15</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>06/24/22</td>
-                                            <td>Transportation</td>
-                                            <td>$15</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>06/24/22</td>
-                                            <td>Transportation</td>
-                                            <td>$15</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>06/24/22</td>
-                                            <td>Transportation</td>
-                                            <td>$15</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>06/24/22</td>
-                                            <td>Transportation</td>
-                                            <td>$15</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>06/24/22</td>
-                                            <td>Transportation</td>
-                                            <td>$15</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>06/24/22</td>
-                                            <td>Transportation</td>
-                                            <td>$15</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>06/24/22</td>
-                                            <td>Transportation</td>
-                                            <td>$15</td>
-                                        </tr>
-
-
                                         </tbody>
                                     </Table>
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
 
-                        <Row className="mt-2">
-                            <Accordion defaultActiveKey="1">
-                                <Accordion.Item eventKey="0">
-                                    <Accordion.Header>Show Weekly Expenses</Accordion.Header>
-                                    <Accordion.Body>
-                                        <Table striped bordered hover variant="light">
-                                            <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Expense Date</th>
-                                                <th>Expense Kind</th>
-                                                <th>Expense Coast</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>06/22/22</td>
-                                                <td>Market</td>
-                                                <td>$156</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>06/23/22</td>
-                                                <td>Ticket</td>
-                                                <td>$16</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>06/24/22</td>
-                                                <td>Transportation</td>
-                                                <td>$15</td>
-                                            </tr>
-
-
-                                            </tbody>
-                                        </Table>
-                                    </Accordion.Body>
-                                </Accordion.Item>
-                            </Accordion>
-
-                        </Row>
+                    </Row>
 
                     <Row className="mt-2">
                         <Accordion defaultActiveKey="1">
@@ -363,26 +204,21 @@ class ViewExpenses extends Component {
                                             <th>Expense Date</th>
                                             <th>Expense Kind</th>
                                             <th>Expense Coast</th>
+                                            <th>Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr>
-                                            <td>1</td>
+                                            <td typeof="date">1</td>
                                             <td>06/22/22</td>
                                             <td>Market</td>
                                             <td>$156</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>06/23/22</td>
-                                            <td>Ticket</td>
-                                            <td>$16</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>06/24/22</td>
-                                            <td>Transportation</td>
-                                            <td>$15</td>
+                                            <td>
+                                                <Button variant="outline-primary" style={{
+                                                    marginRight: "10px"
+                                                }}>Edit</Button>
+                                                <Button variant="outline-danger">Delete</Button>
+                                            </td>
                                         </tr>
 
 
@@ -393,12 +229,13 @@ class ViewExpenses extends Component {
                         </Accordion>
 
                     </Row>
-                        </Container>
+
+                </Container>
 
 
-                        </div>
-                        );
-                    }
-                    }
+            </div>
+        );
+    }
+}
 
-                    export default ViewExpenses;
+export default ViewExpenses;

@@ -24,7 +24,7 @@ class AddExpense extends Component {
 
         this.state = {
 
-            inputValue: null
+            inputValue: 0
 
         }
     }
@@ -54,7 +54,7 @@ class AddExpense extends Component {
 
                                     <InputGroup.Text>$</InputGroup.Text>
 
-                                    <FormControl type="number" placeholder="0" value={this.state.inputValue}
+                                    <FormControl type="number" value={this.state.inputValue}
                                                  onChange={(event) => {
                                                      this.onChange(event.target.value)
                                                  }}/>
@@ -62,10 +62,10 @@ class AddExpense extends Component {
                             </Col>
 
                             <Col md="6">
-                                <Form.Group as={Col} controlId="formGridNote">
-                                    <Form.Label>Note</Form.Label>
-                                    <Form.Control type="note" placeholder="Note"/>
-                                </Form.Group>
+                                <Form.Label>
+                                    Notes
+                                </Form.Label>
+                                <Form.Control type="text" placeholder="Expense note" />
                             </Col>
                         </Row>
 
@@ -97,7 +97,7 @@ class AddExpense extends Component {
 
                         </Row>
 
-                        <Button variant="primary" type="submit" className="mt-5">
+                        <Button variant="primary" type="button" className="mt-5">
                             Submit
                         </Button>
                     </Form>

@@ -14,7 +14,16 @@ class Dashboard extends Component {
         super(props);
 
         this.state = {
-            show: false
+            show: false,
+            containerStyle: {
+                paddingLeft: 0, paddingRight: 0
+            },
+            rowStyle: {
+                marginLeft: 0, marginRight: 0
+            },
+            colStyle: {
+                paddingLeft: 0, paddingRight: 0
+            }
         }
 
     }
@@ -33,15 +42,15 @@ class Dashboard extends Component {
 
                 <DashboardSidebar show={this.state.show} handleClose={this.handleClose}/>
 
-                <Container fluid style={{padding: 0}}>
-                    <Row>
-                        <Col>
+                <Container fluid style={this.state.containerStyle}>
+                    <Row style={this.state.rowStyle}>
+                        <Col style={this.state.colStyle}>
                             <DashboardNavbar show={this.state.show} handleShow={this.handleShow}/>
                         </Col>
                     </Row>
 
-                    <Row>
-                        <Col xs="11" className="mx-auto">
+                    <Row style={this.state.rowStyle}>
+                        <Col style={this.state.colStyle} xs="11" className="mx-auto">
                             <Routes>
                                 <Route path="/" element={<DashboardHome/>}/>
                                 <Route path="/Expenses" element={<ViewExpenses/>}/>
@@ -51,8 +60,8 @@ class Dashboard extends Component {
                         </Col>
                     </Row>
 
-                    <Row>
-                        <Col>
+                    <Row style={this.state.rowStyle}>
+                        <Col style={this.state.colStyle}>
                             <DashboardFooter/>
                         </Col>
                     </Row>

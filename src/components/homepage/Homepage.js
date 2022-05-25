@@ -6,6 +6,7 @@ import ThreeColumn from "./ThreeColumn";
 import Footer from "./Footer";
 import SignIn from "./Sign/SignIn";
 import SignUp from "./Sign/SignUp";
+import AboutUs from "./AboutUs";
 
 class Homepage extends Component {
     render() {
@@ -32,6 +33,13 @@ class Homepage extends Component {
                         <>
                             <TopNavBar/>
                             <SignUp/>
+                            <Footer/>
+                        </>
+                    }/>
+                    <Route path="/AboutUs" element={
+                        <>
+                            <TopNavBar/>
+                            <AboutUs/>
                             <Footer/>
                         </>
                     }/>
