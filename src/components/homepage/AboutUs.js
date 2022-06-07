@@ -29,7 +29,7 @@ class AboutUs extends Component {
                                 MSD, Gaye Asansor and Bilge Adam Companies as a Software Engineer until his work life.
                                 After graduation he stared to work at Garanti Banks as Jr. Software engineer and he
                                 still work. He still improving himself on Java, React, Spring Boot. </p>
-                            <a className="text-muted" href="https://github.com/ahmtkzk">
+                            <a className="text-muted" href="https://github.com/ahmtkzk" target="_blank">
                                 <Github style={{
                                     width:"30px",
                                     height:"30px"
@@ -49,7 +49,7 @@ class AboutUs extends Component {
                                 Suleyman Demirel University as Electronic and Communications Engineering. He worked at
                                 Ozgen Solar Energy Company, Gaye Asansor as a Software Engineer intern until his work life.
                                 He still improving himself on Java, React, Spring Boot.</p>
-                            <a className="text-muted" href="https://github.com/MehmetEminHan">
+                            <a className="text-muted" href="https://github.com/MehmetEminHan" target="_blank">
                                 <Github style={{
                                     width:"30px",
                                     height:"30px"

@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import {Button, Col, Row} from "react-bootstrap";
+import {Link} from "react-router-dom";
 
 class MiddleTextContainer extends Component {
     render() {
         return (
             <div style={
                 {
-                    backgroundColor: "#dedede",
+                    backgroundColor: "#FAF0D7",
                 }
             }>
                 <section className="py-5 text-center container">
@@ -19,7 +20,7 @@ class MiddleTextContainer extends Component {
                                 Now, you can use only track your expenses.</p>
                             <p>
 
-                                <Button variant="primary" className="me-1" href="/AboutUs">About Us</Button>
+                               <Link to="/AboutUS"> <Button variant="primary" className="me-1">About Us</Button></Link>
 
                             </p>
                         </Col>

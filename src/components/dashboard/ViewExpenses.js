@@ -8,6 +8,48 @@ import {Breadcrumb} from "antd";
 
 class ViewExpenses extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            dailyExpenses: [],
+            pageNumber: 0,
+        }
+    }
+
+    componentDidMount() {
+
+        this.fetchAllDailyExpenses();
+        this.setState({pageNumber: this.state.pageNumber + 1});
+
+    }
+
+    fetchAllDailyExpenses = () => {
+
+        let fetchDailyExpensesDatas = "http://localhost:8080/v0/ExpenseTracker/Daily/fetchAll/" + this.state.pageNumber
+
+        fetch(fetchDailyExpensesDatas)
+            .then((datas) => datas.json())
+            .then((finalData) => this.setState({dailyExpenses: finalData}));
+
+    }
+
+    previousPage = () => {
+
+        this.setState({pageNumber: this.state.pageNumber - 1});
+
+
+        this.fetchAllDailyExpenses();
+        console.log(this.state.pageNumber);
+    }
+
+    nextPage = () => {
+
+        this.fetchAllDailyExpenses();
+        this.setState({pageNumber: this.state.pageNumber + 1});
+        console.log(this.state.pageNumber);
+
+    }
 
     render() {
         const options = {
@@ -125,21 +167,25 @@ class ViewExpenses extends Component {
                             <Accordion.Header>Show Daily Expenses</Accordion.Header>
                             <Accordion.Body>
                                 <Table striped bordered hover variant="light">
+
                                     <thead>
                                     <tr>
                                         <th>#</th>
                                         <th>Expense Date</th>
                                         <th>Expense Kind</th>
                                         <th>Expense Coast</th>
+                                        <th>Expense Note</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>06/22/22</td>
-                                        <td>Market</td>
-                                        <td>$156</td>
+
+                                    {this.state.dailyExpenses.map((x) => (<tr>
+                                        <td>{x.id}</td>
+                                        <td>{x.expenseDate}</td>
+                                        <td>{x.expenseCategory}</td>
+                                        <td>{x.expense}</td>
+                                        <td>{x.expenseNote}</td>
                                         <td>
                                             <Button variant="outline-primary" style={{
                                                 marginRight: "10px"
@@ -147,11 +193,16 @@ class ViewExpenses extends Component {
                                             <Button variant="outline-danger">Delete</Button>
                                         </td>
 
-                                    </tr>
 
+                                    </tr>))}
 
                                     </tbody>
+
+
                                 </Table>
+                                <Button variant="outline-danger" onClick={this.previousPage}>Previos</Button>
+                                <Button variant="outline-success" onClick={this.nextPage}>Next</Button>
+
                             </Accordion.Body>
                         </Accordion.Item>
                     </Accordion>
