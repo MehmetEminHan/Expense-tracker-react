@@ -24,17 +24,45 @@ class AddExpense extends Component {
 
         this.state = {
 
-            inputValue: 0
+            expense: 0,
+            expenseDate: null,
+            expenseNote: null,
+            expenseCategory: null,
+            userId: null
 
         }
     }
 
     onChange = (event) => {
         if (event > 0) {
-            this.setState({inputValue: event})
+            this.setState({expense: event});
         } else {
-            this.setState({inputValue: 0})
+            this.setState({expense: 0});
         }
+    }
+
+
+    saveExpense = () => {
+
+        let postData = {
+            expense: this.state.expense,
+            expenseDate: this.state.expenseDate,
+            expenseNote: this.state.expenseNote,
+            expenseCategory: this.state.expenseCategory,
+            userId: 1
+        }
+
+        fetch("http://localhost:8080/v0/ExpenseTracker/Daily/save",
+            {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(postData)
+            }
+        ).then(x => console.log(x.status));
+
+
     }
 
 
@@ -42,65 +70,67 @@ class AddExpense extends Component {
 
         return (
             <div>
-                <Container className="mt-5">
+                <Container className="mt-5 mb-5">
                     <Row>
                         <h1>Add Expense</h1>
                     </Row>
-                    <Form>
-                        <Row className="mb-3">
-                            <Col md="6">
-                                <Form.Label>Expense Coast</Form.Label>
-                                <InputGroup as={Col} className="mb-3">
 
-                                    <InputGroup.Text>$</InputGroup.Text>
+                    <Row className="mb-3">
+                        <Col md="6">
+                            <Form.Label>Expense Coast</Form.Label>
+                            <InputGroup as={Col} className="mb-3">
 
-                                    <FormControl type="number" value={this.state.inputValue}
-                                                 onChange={(event) => {
-                                                     this.onChange(event.target.value)
-                                                 }}/>
-                                </InputGroup>
-                            </Col>
+                                <InputGroup.Text>$</InputGroup.Text>
 
-                            <Col md="6">
-                                <Form.Label>
-                                    Notes
-                                </Form.Label>
-                                <Form.Control type="text" placeholder="Expense note" />
-                            </Col>
-                        </Row>
+                                <FormControl type="number" value={this.state.expense}
+                                             onChange={(event) => {
+                                                 this.onChange(event.target.value)
+                                             }}/>
+                            </InputGroup>
+                        </Col>
+
+                        <Col md="6">
+                            <Form.Label>
+                                Notes
+                            </Form.Label>
+                            <Form.Control type="text" placeholder="Expense note"
+                                          onChange={(e) => this.setState({expenseNote: e.target.value})}/>
+                        </Col>
+                    </Row>
 
 
-                        <Row>
+                    <Row>
 
-                            <Col ms="6">
-                                <div>
-                                    <Form.Group controlId="dob">
-                                        <Form.Label>Select Expense Date</Form.Label>
-                                        <Form.Control type="date" name="dob" placeholder="Date of Birth"/>
-                                    </Form.Group>
-                                </div>
-                            </Col>
-
-                            <Col ms="6">
-                                <Form.Group as={Col} controlId="formGridState">
-                                    <Form.Label>Expense Kind</Form.Label>
-                                    <Form.Select defaultValue="Choose...">
-                                        <option>Choose...</option>
-                                        <option>MARKET</option>
-                                        <option>HEALTH</option>
-                                        <option>TRANSPORTING</option>
-                                        <option>OTHER</option>
-                                    </Form.Select>
+                        <Col ms="6">
+                            <div>
+                                <Form.Group controlId="dob">
+                                    <Form.Label>Select Expense Date</Form.Label>
+                                    <Form.Control type="datetime-local" placeholder="Date of Birth"
+                                                  onChange={(e) => this.setState({expenseDate: e.target.value})}/>
                                 </Form.Group>
-                            </Col>
+                            </div>
+                        </Col>
+
+                        <Col ms="6">
+                            <Form.Group as={Col} controlId="formGridState">
+                                <Form.Label>Expense Kind</Form.Label>
+                                <Form.Select defaultValue="Choose..."
+                                             onChange={(e) => this.setState({expenseCategory: e.target.value})}>
+                                    <option>Choose...</option>
+                                    <option>MARKET</option>
+                                    <option>HEALTH</option>
+                                    <option>TRANSPORTING</option>
+                                    <option>OTHER</option>
+                                </Form.Select>
+                            </Form.Group>
+                        </Col>
 
 
-                        </Row>
+                    </Row>
 
-                        <Button variant="primary" type="button" className="mt-5">
-                            Submit
-                        </Button>
-                    </Form>
+                    <Button variant="primary" type="button" onClick={this.saveExpense} className="mt-5">
+                        Submit
+                    </Button>
 
                 </Container>
 

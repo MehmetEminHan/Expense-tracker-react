@@ -28,7 +28,7 @@ class ViewExpenses extends Component {
 
         let fetchDailyExpensesDatas = "http://localhost:8080/v0/ExpenseTracker/Daily/fetchAll/" + this.state.pageNumber
 
-        fetch(fetchDailyExpensesDatas)
+        fetch(fetchDailyExpensesDatas + this.state.fetchAllPageNumber)
             .then((datas) => datas.json())
             .then((finalData) => this.setState({dailyExpenses: finalData}));
 
@@ -36,11 +36,15 @@ class ViewExpenses extends Component {
 
     previousPage = () => {
 
-        this.setState({pageNumber: this.state.pageNumber - 1});
+        if (0 < this.state.fetchAllPageNumber) {
+            this.state.fetchAllPageNumber--;
+            this.setState({fetchAllPageNumber: this.state.fetchAllPageNumber});
+            this.fetchAllDailyExpenses();
+        } else {
+            this.setState({fetchAllPageNumber: 0});
+            this.fetchAllDailyExpenses();
+        }
 
-
-        this.fetchAllDailyExpenses();
-        console.log(this.state.pageNumber);
     }
 
     nextPage = () => {
