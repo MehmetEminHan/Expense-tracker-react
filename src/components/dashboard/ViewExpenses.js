@@ -5,7 +5,6 @@ import faker from 'faker';
 import {Bar, Pie} from 'react-chartjs-2';
 import {Breadcrumb} from "antd";
 
-
 class ViewExpenses extends Component {
 
     constructor(props) {
@@ -13,25 +12,35 @@ class ViewExpenses extends Component {
 
         this.state = {
             dailyExpenses: [],
-            pageNumber: 0,
+            fetchAllPageNumber: 0,
         }
     }
 
     componentDidMount() {
 
         this.fetchAllDailyExpenses();
-        this.setState({pageNumber: this.state.pageNumber + 1});
+
 
     }
 
     fetchAllDailyExpenses = () => {
 
-        let fetchDailyExpensesDatas = "http://localhost:8080/v0/ExpenseTracker/Daily/fetchAll/" + this.state.pageNumber
+        let fetchDailyExpensesDatas = "http://localhost:8080/v0/ExpenseTracker/Daily/fetchAll/";
 
         fetch(fetchDailyExpensesDatas + this.state.fetchAllPageNumber)
             .then((datas) => datas.json())
             .then((finalData) => this.setState({dailyExpenses: finalData}));
 
+    }
+
+    deleteById = (id) => {
+        if (window.confirm("Do you want to delete?")){
+            fetch("http://localhost:8080/v0/ExpenseTracker/Daily/deleteById/" + id, {
+                method: "GET",
+                header:{"Accept":"application/json",
+                "Content-Type":"application/json"}
+            })
+        }
     }
 
     previousPage = () => {
@@ -49,9 +58,15 @@ class ViewExpenses extends Component {
 
     nextPage = () => {
 
-        this.fetchAllDailyExpenses();
-        this.setState({pageNumber: this.state.pageNumber + 1});
-        console.log(this.state.pageNumber);
+        if (this.state.dailyExpenses[0].pageNumber - 1 > this.state.fetchAllPageNumber) {
+            this.state.fetchAllPageNumber++;
+            this.setState({fetchAllPageNumber: this.state.fetchAllPageNumber});
+            this.fetchAllDailyExpenses();
+        } else {
+
+            this.setState({fetchAllPageNumber: this.state.dailyExpenses[0].pageNumber - 1});
+            this.fetchAllDailyExpenses();
+        }
 
     }
 
@@ -122,7 +137,7 @@ class ViewExpenses extends Component {
             datasets: [
                 {
                     label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
+                    data: [1, 2, 3, 4, 5, 1],
                     backgroundColor: [
                         'rgba(255,99,132,0.2)',
                         'rgba(54,162,235,0.2)',
@@ -143,6 +158,7 @@ class ViewExpenses extends Component {
                 },
             ],
         };
+
 
         return (
             <div className="mt-5">
@@ -184,7 +200,7 @@ class ViewExpenses extends Component {
                                     </thead>
                                     <tbody>
 
-                                    {this.state.dailyExpenses.map((x) => (<tr>
+                                    {this.state.dailyExpenses.map((x) => (<tr key={x.id}>
                                         <td>{x.id}</td>
                                         <td>{x.expenseDate}</td>
                                         <td>{x.expenseCategory}</td>
@@ -194,7 +210,9 @@ class ViewExpenses extends Component {
                                             <Button variant="outline-primary" style={{
                                                 marginRight: "10px"
                                             }}>Edit</Button>
-                                            <Button variant="outline-danger">Delete</Button>
+                                            <Button variant="outline-danger" type={"button"}
+                                                    onClick={() => this.deleteById(x.id)}>Delete</Button>
+
                                         </td>
 
 
